@@ -30,128 +30,139 @@
                         HeightRequest="150"
                         />
 
-                       <Label Text="įPréstamo"
-                       TextColor="#FFCC70"
-                       FontSize="25"
-                       FontAttributes="Bold"
-                       HorizontalTextAlignment="Center"
-                        Margin="0,0,0,25"/>
+                       <Label
+                        FontSize="25"
+                        FontAttributes="Bold"
+                        HorizontalTextAlignment="Center"
+                        Margin="0,0,0,25"
+                        Text="įPréstamo"
+                        TextColor="#FFCC70"/>
                 </StackLayout>
                 
 
                             <Entry
+                            ClearButtonVisibility="WhileEditing"
                             FontSize="22"
                             FontAttributes="Bold"
-                            Placeholder="Cantidad de préstamo $"
                             HorizontalTextAlignment="Center"
-                            ClearButtonVisibility="WhileEditing"
+                            HeightRequest="65"
                             Keyboard="Numeric"
+                            Placeholder="Cantidad de préstamo $"
                             PlaceholderColor="Gray"
                             TextColor="#FFCC70"
                             Text="{Binding CantidadTxt, Mode=TwoWay}"
-                             HeightRequest="65"/>
+                             />
 
                             <Entry
+                            ClearButtonVisibility="WhileEditing"
                             FontSize="22"
                             FontAttributes="Bold"
-                            Placeholder=" Interés (%)"
                             HorizontalTextAlignment="Center"
-                            ClearButtonVisibility="WhileEditing"
+                            HeightRequest="65"
                             Keyboard="Numeric"
                             PlaceholderColor="Gray"
+                            Placeholder=" Interés (%)"
                             TextColor="#FFCC70"
                             Text="{Binding InteresTxt, Mode=TwoWay}"
-                            HeightRequest="65"/>
+                            />
                             
                   
                             <Entry
+                            ClearButtonVisibility="WhileEditing"
                             FontSize="22"
                             FontAttributes="Bold"
-                            Placeholder=" ¿Meses de préstamo?"
+                            HeightRequest="65"
                             HorizontalTextAlignment="Center"
-                            ClearButtonVisibility="WhileEditing"
-                            PlaceholderColor="Gray"
                             Keyboard="Numeric"
+                            PlaceholderColor="Gray"
+                            Placeholder=" ¿Meses de préstamo?"
                             TextColor="#FFCC70"
                             Text="{Binding NumeroMesesTxt, Mode=TwoWay}"
-                            HeightRequest="65"/>
+                            />
                 
 
                              <Label FontSize="18"
+                                    FontAttributes="Bold"
+                                    HorizontalTextAlignment="Center"
+                                    IsVisible="{Binding TituloInteresTotalLbl}"
                                     TextColor="White"
                                     Text="Interés total"
-                                    HorizontalTextAlignment="Center"
-                                    FontAttributes="Bold"
-                                    Padding="0,20,0,0"
-                                    IsVisible="{Binding TituloInteresTotalLbl}"/>
+                                    Padding="0,20,0,0"/>
 
                             <Frame BackgroundColor="Transparent"
-                                   HasShadow="True"
                                    BorderColor="#C850C0"
+                                   HasShadow="True"
                                    IsVisible="{Binding FrameResultInteres}"
-                                   Margin="30,0,30,15"
-                                   >
+                                   Margin="30,0,30,15" >
                                  
-                                  <Label VerticalTextAlignment="Center"
+                                  <Label 
                                    HorizontalTextAlignment="Center"
                                    FontSize="30"
                                    FontAttributes="Bold"
                                    Text="{Binding ResultadoInteresLbl, Mode=TwoWay}"
-                                   TextColor="#FFCC70"/>
+                                   TextColor="#FFCC70"
+                                   VerticalTextAlignment="Center"/>
                             </Frame>
 
-                            <Label FontSize="18"
+                            <Label  FontSize="18"
+                                    FontAttributes="Bold"
+                                    HorizontalTextAlignment="Center"
                                     TextColor="White"
                                     Text="Cantidad préstamo $  +   Interés total"
-                                    HorizontalTextAlignment="Center"
-                                    FontAttributes="Bold"
+                                    IsVisible="{Binding TituloCantidadInteresTotalLbl}"
                                     Padding="0,0,0,0"
-                                    IsVisible="{Binding TituloCantidadInteresTotalLbl}"/>
+                                    />
+
                             <Frame BackgroundColor="Transparent"
-                                   HasShadow="True"
                                    BorderColor="#C850C0"
+                                   HasShadow="True"
                                    IsVisible="{Binding FrameResultCantidadInteres}"
                                    Margin="35,0,35,15"
                                    >
                                  
-                                  <Label VerticalTextAlignment="Center"
-                                   HorizontalTextAlignment="Center"
+                                  <Label
                                    FontSize="30"
                                    FontAttributes="Bold"
+                                   HorizontalTextAlignment="Center"
                                    Text="{Binding ResultadoCantidadInteresLbl, Mode=TwoWay}"
-                                   TextColor="#FFCC70"/>
+                                   TextColor="#FFCC70"
+                                   VerticalTextAlignment="Center"/>
                             </Frame>
 
                                 
                 <StackLayout Margin="55,20,55,0"
                              Orientation="Vertical">
-                    <Button CornerRadius="25"
+                    <Button
+                            BackgroundColor="#7B1FA2"
+                            Command="{ Binding CalcularCommand}"
+                            CornerRadius="25"
+                            FontAttributes="Bold"
+                            FontSize="18"
                             HeightRequest="50"
                             TextTransform="None"
                             Text="Generar pago"
-                            TextColor="White"
+                            TextColor="White" 
+                            />
+
+                    <Button BackgroundColor="#7B1FA2"
+                            Command="{ Binding RefreshCommand}"
+                            CornerRadius="25"
                             FontAttributes="Bold"
                             FontSize="18"
-                            BackgroundColor="#7B1FA2"
-                            Command="{ Binding CalcularCommand}"/>
-
-                    <Button Margin="0,10,0,0"
-                            CornerRadius="25"
                             HeightRequest="50"
+                            IsVisible="{Binding  botonRefresh}"
+                            Margin="0,10,0,0"
                             TextTransform="None"
                             Text="Vaciar campos"
                             TextColor="White"
-                            FontAttributes="Bold"
-                            FontSize="18"
-                            BackgroundColor="#7B1FA2"
-                            IsVisible="{Binding  botonRefresh}"
-                            Command="{ Binding RefreshCommand}"/>
+                            />
                 </StackLayout>
                 <StackLayout Margin="10,60,10,0">
-                    <Label Text="© 2021 All copyrights reserved By Tony_dev "
-                           TextColor="#FFCC70"
-                           Opacity="0.5"
-                           IsVisible="{Binding CopyRigth}"/>
+                    <Label  IsVisible="{Binding CopyRigth}"
+                            Text="© 2021 All copyrights reserved By Tony_dev "
+                            TextColor="#FFCC70"
+                            Opacity="0.5"
+                           />
                 </StackLayout>
              </StackLayout>
         </Grid>
