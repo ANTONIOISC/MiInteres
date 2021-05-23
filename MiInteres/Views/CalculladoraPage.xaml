@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:magic="clr-namespace:MagicGradients;assembly=MagicGradients"
+    x:Class="MiInteres.Views.CalculladoraPage"
+    Visual="Material">
+    <ScrollView>
+        <Grid>
+            <magic:GradientView VerticalOptions="FillAndExpand">
+               <magic:GradientView.GradientSource>
+                 <magic:LinearGradient Angle="4">
+                     <magic:GradientStop Color="#7B1FA2" Offset="0"/>
+                   <magic:GradientStop Color="#002244" Offset="1"/>
+                 </magic:LinearGradient>
+               </magic:GradientView.GradientSource>
+            </magic:GradientView>
+            <StackLayout>
+                  <StackLayout.Margin>
+                      <OnPlatform x:TypeArguments="Thickness">
+                           <On Platform="iOS" Value="30,80"/>
+                           <On Platform="Android" Value="30,30"/>
+                      </OnPlatform>          
+                  </StackLayout.Margin>
+
+                <StackLayout
+                        Orientation="Vertical">
+                        <Image Source="logo_interes.png"
+                        WidthRequest="180"
+                        HeightRequest="150"
+                        />
+
+                       <Label Text="įPréstamo"
+                       TextColor="#FFCC70"
+                       FontSize="25"
+                       FontAttributes="Bold"
+                       HorizontalTextAlignment="Center"
+                        Margin="0,0,0,25"/>
+                </StackLayout>
+                
+
+                            <Entry
+                            FontSize="22"
+                            FontAttributes="Bold"
+                            Placeholder="Cantidad de préstamo $"
+                            HorizontalTextAlignment="Center"
+                            ClearButtonVisibility="WhileEditing"
+                            Keyboard="Numeric"
+                            PlaceholderColor="Gray"
+                            TextColor="#FFCC70"
+                            Text="{Binding CantidadTxt, Mode=TwoWay}"
+                             HeightRequest="65"/>
+
+                            <Entry
+                            FontSize="22"
+                            FontAttributes="Bold"
+                            Placeholder=" Interés (%)"
+                            HorizontalTextAlignment="Center"
+                            ClearButtonVisibility="WhileEditing"
+                            Keyboard="Numeric"
+                            PlaceholderColor="Gray"
+                            TextColor="#FFCC70"
+                            Text="{Binding InteresTxt, Mode=TwoWay}"
+                            HeightRequest="65"/>
+                            
+                  
+                            <Entry
+                            FontSize="22"
+                            FontAttributes="Bold"
+                            Placeholder=" ¿Meses de préstamo?"
+                            HorizontalTextAlignment="Center"
+                            ClearButtonVisibility="WhileEditing"
+                            PlaceholderColor="Gray"
+                            Keyboard="Numeric"
+                            TextColor="#FFCC70"
+                            Text="{Binding NumeroMesesTxt, Mode=TwoWay}"
+                            HeightRequest="65"/>
+                
+
+                             <Label FontSize="18"
+                                    TextColor="White"
+                                    Text="Interés total"
+                                    HorizontalTextAlignment="Center"
+                                    FontAttributes="Bold"
+                                    Padding="0,20,0,0"
+                                    IsVisible="{Binding TituloInteresTotalLbl}"/>
+
+                            <Frame BackgroundColor="Transparent"
+                                   HasShadow="True"
+                                   BorderColor="#C850C0"
+                                   IsVisible="{Binding FrameResultInteres}"
+                                   Margin="30,0,30,15"
+                                   >
+                                 
+                                  <Label VerticalTextAlignment="Center"
+                                   HorizontalTextAlignment="Center"
+                                   FontSize="30"
+                                   FontAttributes="Bold"
+                                   Text="{Binding ResultadoInteresLbl, Mode=TwoWay}"
+                                   TextColor="#FFCC70"/>
+                            </Frame>
+
+                            <Label FontSize="18"
+                                    TextColor="White"
+                                    Text="Cantidad préstamo $  +   Interés total"
+                                    HorizontalTextAlignment="Center"
+                                    FontAttributes="Bold"
+                                    Padding="0,0,0,0"
+                                    IsVisible="{Binding TituloCantidadInteresTotalLbl}"/>
+                            <Frame BackgroundColor="Transparent"
+                                   HasShadow="True"
+                                   BorderColor="#C850C0"
+                                   IsVisible="{Binding FrameResultCantidadInteres}"
+                                   Margin="35,0,35,15"
+                                   >
+                                 
+                                  <Label VerticalTextAlignment="Center"
+                                   HorizontalTextAlignment="Center"
+                                   FontSize="30"
+                                   FontAttributes="Bold"
+                                   Text="{Binding ResultadoCantidadInteresLbl, Mode=TwoWay}"
+                                   TextColor="#FFCC70"/>
+                            </Frame>
+
+                                
+                <StackLayout Margin="55,20,55,0"
+                             Orientation="Vertical">
+                    <Button CornerRadius="25"
+                            HeightRequest="50"
+                            TextTransform="None"
+                            Text="Generar pago"
+                            TextColor="White"
+                            FontAttributes="Bold"
+                            FontSize="18"
+                            BackgroundColor="#7B1FA2"
+                            Command="{ Binding CalcularCommand}"/>
+
+                    <Button Margin="0,10,0,0"
+                            CornerRadius="25"
+                            HeightRequest="50"
+                            TextTransform="None"
+                            Text="Vaciar campos"
+                            TextColor="White"
+                            FontAttributes="Bold"
+                            FontSize="18"
+                            BackgroundColor="#7B1FA2"
+                            IsVisible="{Binding  botonRefresh}"
+                            Command="{ Binding RefreshCommand}"/>
+                </StackLayout>
+                <StackLayout Margin="10,60,10,0">
+                    <Label Text="© 2021 All copyrights reserved By Tony_dev "
+                           TextColor="#FFCC70"
+                           Opacity="0.5"
+                           IsVisible="{Binding CopyRigth}"/>
+                </StackLayout>
+             </StackLayout>
+        </Grid>
+    </ScrollView>
+</ContentPage>
